@@ -1,0 +1,12 @@
+namespace: sd-test
+name: example-template
+version: '1.0.0'
+description: An example pipeline template for testing golang files
+maintainer: foo@bar.com
+config:
+  shared:
+    image: golang
+  jobs:
+    main:
+      steps:
+        - name: echo "pipeline template test"
