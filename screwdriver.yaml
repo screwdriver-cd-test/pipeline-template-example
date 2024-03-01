@@ -1,4 +1,19 @@
-template: sd-test/example-template@latest
 shared:
-  environment: 
-    FOO: bar  
+  image: node:lts
+jobs:
+  # 1. Validate pipeline template
+  validate_template:
+    requires: [~pr, ~commit]
+    steps:
+    - install_prerequisites: npm install -g screwdriver-template-main
+    # a. Validate the default (sd-test/example-template) template
+    - validate_default_template: pipeline-template-validate
+
+  # 2a. Publish and tag the golang template in one job
+  # Note: We do not need to set SD_TEMPLATE_PATH since that template is in the default path (sd-template.yaml)
+  publish_default_template:
+    requires: [validate_template]
+    steps:
+    - install_prerequisites: npm install -g screwdriver-template-main
+    - publish:  pipeline-template-publish
+    - autotag: pipeline-template-tag --namespace sd-test --name example-template --tag latest
