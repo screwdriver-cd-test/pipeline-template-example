@@ -6,6 +6,9 @@ maintainer: foo@bar.com
 config:
   parameters:
     nameA: "value1"
+  annotations:
+    screwdriver.cd/restrictPR: none
+    screwdriver.cd/chainPR: false
   shared:
     image: golang
   jobs:
