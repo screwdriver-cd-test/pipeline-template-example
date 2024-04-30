@@ -11,6 +11,8 @@ config:
     screwdriver.cd/chainPR: false
   shared:
     image: golang
+    annotations:
+      screwdriver.cd/cpu: HIGH
   jobs:
     main:
       steps:
