@@ -9,10 +9,10 @@ config:
   annotations:
     screwdriver.cd/restrictPR: none
     screwdriver.cd/chainPR: false
+  cache:
+    event: [$SD_SOURCE_DIR/node_modules]
   shared:
     image: golang
-    annotations:
-      screwdriver.cd/buildPeriodically: H * * * *
   jobs:
     main:
       steps:
