@@ -12,7 +12,7 @@ config:
   shared:
     image: golang
     annotations:
-      screwdriver.cd/cpu: HIGH
+      screwdriver.cd/buildPeriodically: H * * * *
   jobs:
     main:
       steps:
