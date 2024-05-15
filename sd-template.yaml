@@ -16,5 +16,3 @@ config:
   jobs:
     main:
       template: sd/noop@1.0.12
-      steps:
-        - name: echo "pipeline template test"
