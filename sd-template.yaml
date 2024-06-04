@@ -6,13 +6,13 @@ maintainer: foo@bar.com
 config:
   parameters:
     nameA: "value1"
-  annotations:
-    screwdriver.cd/restrictPR: none
-    screwdriver.cd/chainPR: false
-  cache:
-    event: [$SD_SOURCE_DIR/node_modules]
   shared:
     image: golang
+    environment:
+      FOO: foo
+      BAR: bar
   jobs:
     main:
-      template: sd/noop@1.0.12
+      steps:
+        - echofoo: echo $FOO
+        - echobar: echo $BAR
